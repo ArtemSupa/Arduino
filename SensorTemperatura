@@ -1,0 +1,22 @@
+#include <LiquidCrystal.h>
+
+
+LiquidCrystal lcd (12, 11, 5, 4, 3, 2);
+const int sensorPin = A0;
+void setup(){
+Serial.begin(9600);
+lcd.begin(16, 2);
+  
+}
+
+void loop(){
+  	double Redondeado=0.0;
+  	int sensorVal=analogRead(sensorPin);
+	float voltaje = round((5.0/1024*sensorVal)*100-50);
+  	Redondeado=round(voltaje);
+  	lcd.setCursor(0, 0);
+  	lcd.print("Temperatura:");
+  	lcd.setCursor(0,1);
+  	lcd.print(voltaje);
+  	lcd.print(" Grados C");
+}
